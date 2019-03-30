@@ -1,17 +1,15 @@
 # 레드-블랙 트리
 ## 📢 개요
 
- 레드-블랙 트리(RB Tree; Red-Black Tree)는 삽입, 삭제, 검색에서 어떠한 경우에도 일정한 //`다음 노드(Next Node)`가 **일방적**으로 `이전 노드(Previous Node)`를 연결하고 있던 단일 연결 리스트(단일 연결 리스트)와 달리 `이전 노드(Previous Node)`와 `다음 노드(Next Node)`가 **서로 연결**되어 있는 연결 리스트이다.
+ `레드-블랙 트리(RB Tree; Red-Black Tree)`는 각각의 노드가 **레드**나 **블랙**인 색상을 가지고 있는 이진 탐색 트리다. 삽입, 삭제, 검색에서 어떠한 경우에도 일정한 시간을 보장한다는 것이 특징이다. 때문에 실시간 처리 등 실행 시간이 중요한 경우에 주로 쓰인다. 실제로 STL의 내부 구현에 레드-블랙 트리가 사용되었다고 알려져 있다.
  
- 그래서 단일 연결 리스트에 비해 구현이 조금 까다롭고 다음 노드와 이전 노드를 가리키는 포인터가 두 개 필요하여 메모리를 더 사용한다는 단점이 있다. 하지만, 탐색이 양방향에서 가능하다는 큰 이점이 있다.
- 
- 
-## 💻 GDI 트리
- 캐릭터를 방향키로 움직이고 A. S. D키를 눌러 적 캐릭터를 물리치는 게임
+## 💻 트리 GDI
+ BS 트리와 RB 트리의 노드 추가, 제거 과정을 볼 수 있는 시뮬레이션 프로그램. 마우스로 화면을 드래그하여 화면 바깥으로 나간 부분을 볼 수도 있다.
  
  ![BSTree](https://github.com/kbm0996/WinAPI-Tree_Structure/blob/master/figure/bstree.png)
  
  **figure 1. BSTree*
+
  
  ![BSTree](https://github.com/kbm0996/WinAPI-Tree_Structure/blob/master/figure/rbtree.png)
  
