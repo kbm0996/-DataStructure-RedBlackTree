@@ -39,7 +39,7 @@ bool mylib::CRedBlackTree::InsertNode(int iKey)
 			if (pNode->pParent == pNode->pParent->pParent->pChild_left)
 			{
 				pUncle = pNode->pParent->pParent->pChild_Right;
-				// If the parent is `RED`, the parent's sibling is `RED`
+				// If the parent is `RED`, the parent's sibling(uncle) is `RED`
 				if (pUncle->Color == RED)
 				{
 					pNode->pParent->Color = BLACK;
@@ -47,7 +47,7 @@ bool mylib::CRedBlackTree::InsertNode(int iKey)
 					pNode->pParent->pParent->Color = RED;
 					pNode = pNode->pParent->pParent;
 				}
-				// If the parent is `RED`, the parent's sibling is `BLACK`
+				// If the parent is `RED`, the parent's sibling(uncle) is `BLACK`
 				else
 				{
 					//  When you make a right turn, the left child goes to the left side of the tree.
@@ -67,7 +67,7 @@ bool mylib::CRedBlackTree::InsertNode(int iKey)
 			else
 			{
 				pUncle = pNode->pParent->pParent->pChild_left;
-				// If the parent is `RED`, the parent's sibling is `RED`
+				// If the parent is `RED`, the parent's sibling(uncle) is `RED`
 				if (pUncle->Color == RED)
 				{
 					pNode->pParent->Color = BLACK;
@@ -75,7 +75,7 @@ bool mylib::CRedBlackTree::InsertNode(int iKey)
 					pNode->pParent->pParent->Color = RED;
 					pNode = pNode->pParent->pParent;
 				}
-				// If the parent is `RED`, the parent's sibling is `BLACK`
+				// If the parent is `RED`, the parent's sibling(uncle) is `BLACK`
 				else
 				{
 					if (pNode == pNode->pParent->pChild_left)
