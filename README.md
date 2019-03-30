@@ -16,6 +16,15 @@
  **figure 2. RBTree*
  
 ## 🅿 원리
+>### ● 레드-블랙 트리의 특성
+>>1. 노드는 레드 혹은 블랙 중의 하나이다.
+>>2. 루트 노드는 블랙이다.
+>>3. 모든 널 포인터(Nil)는 블랙이다.
+>>4. 레드 노드의 자식노드 양쪽은 언제나 모두 블랙이다. (즉, 레드 노드는 연달아 나타날 수 없으며, 블랙 노드만이 레드 노드의 부모 노드가 될 수 있다)
+>>5. 어떤 노드로부터 시작되어 리프 노드에 도달하는 모든 경로에는 리프 노드를 제외하면 모두 같은 개수의 블랙 노드가 있다.
+>
+> 위 조건들을 만족하게 되면, 레드-블랙 트리는 가장 중요한 특성을 나타내게 된다: 루트 노드부터 가장 먼 경로까지의 거리가, 가장 가까운 경로까지의 거리의 두 배 보다 항상 작다. 다시 말해서 레드-블랙 트리는 개략적(roughly)으로 균형이 잡혀 있다(balanced). 따라서, 삽입, 삭제, 검색시 최악의 경우(worst-case)에서의 시간복잡도가 트리의 높이(또는 깊이)에 따라 결정되기 때문에 보통의 이진 탐색 트리에 비해 효율적이라고 할 수 있다.
+
  ### 1. 노드 추가
    단순 연결 리스트와 거의 비슷합니다. 중요한 차이점은 양방향으로 연결을 해야 한다는 점입니다. 새로운 노드(25)를 기존의 노드(20, 30)와 연결하는 방법만 살펴보겠습니다.
 
@@ -52,31 +61,6 @@
   ![](https://s3.ap-northeast-2.amazonaws.com/opentutorials-user-file/module/1335/2963.png)
 
  **figure 7. Phase 6*
- 
- #### ● 소스 코드
-      void DoublyLinkedlist::push_front(char* szData)
-      {
-        stNODE *pNode = (stNODE*)malloc(sizeof(stNODE));
-
-        memcpy(pNode->szData, szData, sizeof(pNode->szData));
-
-        pNode->pPrev = &_Head;
-        pNode->pNext = _Head.pNext;
-        pNode->pPrev->pNext = pNode;
-        pNode->pNext->pPrev = pNode;
-      }
-
-      void DoublyLinkedlist::push_back(char* szData)
-      {
-        stNODE *pNode = (stNODE*)malloc(sizeof(stNODE));
-
-        memcpy(pNode->szData, szData, sizeof(pNode->szData));
-
-        pNode->pPrev = _Tail.pPrev;
-        pNode->pNext = &_Tail;
-        pNode->pPrev->pNext = pNode;
-        pNode->pNext->pPrev = pNode;
-      }
  
  ### 2. 노드 제거
  
@@ -123,29 +107,11 @@
   삭제가 완료 되었습니다.
  
  
-  #### ● 소스 코드
-      bool DoublyLinkedlist::Delete(char* szData)
-      {
-        stNODE *pNode = _Head.pNext;
-
-        while (pNode->pNext != NULL)
-        {
-          if (strcmp(pNode->szData, szData) == 0)
-          {
-            pNode->pPrev->pNext = pNode->pNext;
-            pNode->pNext->pPrev = pNode->pPrev;
-            free(pNode);
-            return true;
-          }
-          pNode = pNode->pNext;
-        }
-        return false;
-      }
- 
- 
  ## 📌 이미지 및 설명 출처 
  
+ 레드-블랙트리의 특성 - https://ko.wikipedia.org/wiki/레드-블랙_트리
  원리 파트 - https://opentutorials.org/module/1335/8940
+ 
 
 
 
