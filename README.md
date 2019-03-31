@@ -77,17 +77,29 @@
  
  ### 2. 노드 제거
  
-  ![](https://s3.ap-northeast-2.amazonaws.com/opentutorials-user-file/module/1335/2969.png)
+1. BST와 같은 방법으로 리프(Leaf)이거나 자식을 하나만 가진 노드를 제거한다. 내부 노드의 경우 후속 노드를 복사 한 다음 재귀적으로 후속 노드를 호출한다. 이 때 후속 노드는 리프 노드이거나 자식을 하나만 가진 노드이다.
 
- **figure 8. Phase 1*
+2. 간단한 상황 : **삭제할 노드 u** 또는 **대체할 노드 v**가 `RED`일 경우, **교체된 자식**을 `BLACK`으로 설정한다(`BLACK`의 개수가 바뀌지 않는다). 이 때 RED는 연속될 수 없다는 레드-블랙 트리의 특성에 따라 u와 v 둘 다 RED가 될 수는 없다.
 
-  삭제하려는 노드의 이전 노드(20)을 찾습니다.
+  ![](https://www.geeksforgeeks.org/wp-content/uploads/rbdelete11.png)
+
+ **figure 8. 간단한 상황*
+
+3. **삭제할 노드 u**와 **대체할 노드 v** 둘 다 `BLACK`일 경우
+
+   3-1. **u**를 `이중 BLACK`으로 설정. 삭제할 노드 v가 리프면, 대체할 노드u는 NILL(BLACK)이다. 따라서 BLACK 리프를 제거하면 이중 BLACK이 된다.
   
-  ![](https://s3.ap-northeast-2.amazonaws.com/opentutorials-user-file/module/1335/2970.png)
+  ![](https://www.geeksforgeeks.org/wp-content/uploads/rbdelete12_new.png)
 
- **figure 9. Phase 2*
+ **figure 9. u가 BLACK 리프인 경우*
   
-  삭제하려는 노드(30)도 찾습니다.
+   3-2. **u**가 `이중 BLACK`이고 루트가 아닌 경우, 노드의 형제가 s가 되게 한다.
+   
+    3-2-1. **형제 s**가 `BLACK`이고 **형제의 자식** 중 `RED`인 **r**이 있으면 회전한다. 이 때 s와 r의 위치에 따라 4개의 하위 경우가 나온다.  
+
+   
+   //////////
+   
 
   ![](https://s3.ap-northeast-2.amazonaws.com/opentutorials-user-file/module/1335/2971.png)
 
