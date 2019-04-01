@@ -17,11 +17,11 @@
  
 ## 🅿 원리
 ### ● 레드-블랙 트리의 특성
->1. 노드는 레드 혹은 블랙 중의 하나이다.
->2. 루트 노드는 블랙이다.
->3. 모든 널 포인터(Nil)는 블랙이다.
->4. 레드 노드의 자식노드 양쪽은 언제나 모두 블랙이다. (즉, 레드 노드는 연달아 나타날 수 없으며, 블랙 노드만이 레드 노드의 부모 노드가 될 수 있다)
->5. 어떤 노드로부터 시작되어 리프 노드에 도달하는 모든 경로에는 리프 노드를 제외하면 모두 같은 개수의 블랙 노드가 있다.
+>1. 노드는 RED 혹은 BLACK 중 하나이다.
+>2. 루트 노드는 BLACK이다.
+>3. 모든 널 포인터(Nil)는 BLACK이다.
+>4. 레드 노드의 자식노드 양쪽은 언제나 모두 BLACK이다. (즉, RED는 연속으로 이어질 수 없으며, BLACK만이 RED의 부모가 될 수 있다)
+>5. 어떤 노드로부터 시작되어 리프 노드에 도달하는 모든 경로에는 리프 노드를 제외하면 모두 같은 개수의 BLACK이 있다. (이하 BLACK 높이로 표현)
 
  삽입, 삭제 마다 노드 `컬러 조정`, `부분 트리 회전`을 하여 위 조건을 충족시키면서 레드-블랙 트리의 균형을 맞춘다.
 
@@ -79,7 +79,7 @@
  
 1. BST와 같은 방법으로 리프(Leaf)이거나 자식을 하나만 가진 노드를 제거한다. 내부 노드의 경우 후속 노드를 복사 한 다음 재귀적으로 후속 노드를 호출한다. 이 때 후속 노드는 리프 노드이거나 자식을 하나만 가진 노드이다.
 
-2. 간단한 상황 : **대체할 노드 u** 또는 **삭제할 노드 v**가 `RED`일 경우, **교체된 자식**을 `BLACK`으로 설정한다(`BLACK`의 개수가 바뀌지 않는다). 이 때 RED는 연속될 수 없다는 레드-블랙 트리의 특성에 따라 u와 v 둘 다 RED가 될 수는 없다.
+2. 간단한 상황 : **대체할 노드 u** 또는 **삭제할 노드 v**가 `RED`일 경우, **교체된 자식**을 `BLACK`으로 설정한다(BLACK 높이가 바뀌지는 않는다). 이 때 RED는 연속될 수 없다는 레드-블랙 트리의 특성에 따라 u와 v 둘 다 RED가 될 수는 없다.
 
   ![](https://www.geeksforgeeks.org/wp-content/uploads/rbdelete11.png)
 
@@ -128,47 +128,14 @@
   ![](https://www.geeksforgeeks.org/wp-content/uploads/rbdelete161-1024x704.png)
 
  **figure 10. 대체할 노드와 삭제할 노드 둘 다 BLACK ~ 형제 RED ~ 오른쪽(RIGHT) 상황*
-   //////////
-   
-   
-   
-   
-   
-   
-   
-
-
-
-  삭제하려는 노드의 다음 노드(40)도 찾습니다.
-
-  ![](https://s3.ap-northeast-2.amazonaws.com/opentutorials-user-file/module/1335/2972.png)
-
- **figure 11. Phase 4*
-
-  30을 삭제합니다.
-
-  ![](https://s3.ap-northeast-2.amazonaws.com/opentutorials-user-file/module/1335/2973.png)
-
- **figure 12. Phase 5*
-
-  20의 다음 노드로 40을 지정합니다.
-
-  ![](https://s3.ap-northeast-2.amazonaws.com/opentutorials-user-file/module/1335/2974.png)
-
- **figure 13. Phase 6*
-
-  40의 이전 노드로 20을 지정합니다.
-
-  ![](https://s3.ap-northeast-2.amazonaws.com/opentutorials-user-file/module/1335/2975.png)
-
- **figure 14. Phase 7*
-
-  삭제가 완료 되었습니다.
+ 
+   3-2. **u**가 루트(Root)일 경우, `BLACK`으로 만들고 리턴(완성된 트리의 BLACK 높이는 1 감소)
+ 
  
  
  ## 📌 이미지 및 설명 출처 
  
  레드-블랙트리의 특성 - https://ko.wikipedia.org/wiki/레드-블랙_트리
  
- 레드-블랙트리 삽입삭제 과정 - https://www.geeksforgeeks.org
+ 레드-블랙트리 삽입 삭제 과정 - https://www.geeksforgeeks.org
 
